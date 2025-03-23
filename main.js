@@ -1,5 +1,15 @@
 class Ship {
-    constructor(){
+    constructor(length){
+        this.length = length
+        this.hitTimes = null;
+        this.sunk = false;
+    }
+
+    hit(){
+        this.hitTimes++
+    }
+
+    isSunk(){
 
     }
 }
@@ -11,5 +21,8 @@ class Gameboard {
 }
 
 class Player{
-    
+
 }
+
+
+export {Ship}
