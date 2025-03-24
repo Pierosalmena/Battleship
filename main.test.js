@@ -1,4 +1,4 @@
-import {Ship} from './main.js'
+import {Ship, Gameboard} from './main.js'
 
 test('hit method', () => {
     const ship = new Ship(3)
@@ -18,4 +18,23 @@ test('isSunk method', () => {
     const ship = new Ship(3)
     ship.isSunk()
     expect(ship.sunk).toBe(true)
+})
+
+test('gameboard class', () => {
+    const gameboard = new Gameboard(5)
+    const ship = new Ship(3)
+
+    gameboard.placeShip(ship, 2, 4, "h")
+    expect(gameboard.board[2][4]).toBe(ship)
+    expect(gameboard.board[2][5]).toBe(ship)
+})
+
+test('gameboard vertically', () => {
+    const gameboard = new Gameboard(5)
+    const ship = new Ship(3)
+
+    gameboard.placeShip(ship,2,1,"v")
+    expect(gameboard.board[2][1]).toBe(ship)
+    expect(gameboard.board[3][1]).toBe(ship)
+
 })
