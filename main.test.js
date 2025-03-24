@@ -38,3 +38,14 @@ test('gameboard vertically', () => {
     expect(gameboard.board[3][1]).toBe(ship)
 
 })
+
+test('gameboard receivedAttack', () => {
+    const gameboard = new Gameboard(5)
+    const ship = new Ship(1)
+    gameboard.placeShip(ship,2,1,"v")
+    gameboard.receiveAttack(2,1);
+    expect(gameboard.board[2][1]).toBe("x")
+    expect(ship.hitTimes).toBe(1)
+    expect(ship.sunk).toBe(true)
+
+})

@@ -19,7 +19,7 @@ class Gameboard {
 
     // Gameboards should be able to place ships at specific coordinates by calling the ship factory or class.
     constructor(amountShips){
-        this.missedAttacks = [];
+        // this.missedAttacks = [];
         this.allShipSunk = amountShips;
         this.board = Array.from({length: 10}, () => Array(10).fill(null));
 
@@ -51,30 +51,26 @@ class Gameboard {
     return true
 }
 
-    // shipsAtCoordinates(ship, x, y){
-    //     // const aircraftCarrier = new Ship(5);
-    //     // const battleship = new Ship(4);
-    //     // const cruiser = new Ship(3);
-    //     // const submarine = new Ship(3);
-    //     // const destroyer = new Ship(2);
-    //     const shipLength = ship.length
-    //     const coordinates = [x[y]]
+    receiveAttack(x,y){
+        if (this.board[x][y]){
+            const target = this.board[x][y]
+            target.hit()
+            this.board[x][y] = "x"
+            if(target.sunk === true) {
+                this.allShipSunk--
+                if(this.allShipSunk === 0) return "You lost all of your ships"
+            }
+        } else if(this.board[x][y] === "x") {
+            return "Please select new coordinates, you already hit this location"
+        } else {
+            this.board[x][y] = "x"
+        }
 
-    //     for (let i = 0; i <= x; i++){
-    //         if(i){
-    //             for(let j = 0; j<= y; j++){
-
-    //             }
-    //         }
-
-    //     }
-
-    //     this.board[coordinates].push(ship)
-    //     this.board.splice([x[y]], x[y+shipLength - 1)
-    // }
-
-    receiveAttack(){
         // decrease all Ship sunk
+        // check board if there is a ship
+        // take ship name and increase hit -- noo need use hit() mehtod
+        // If ship sunk property equals true reduce amount of ships in game
+        // if no ship is there mark coordinates with an X
     }
 
     // Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
