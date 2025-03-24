@@ -19,7 +19,7 @@ class Gameboard {
 
     // Gameboards should be able to place ships at specific coordinates by calling the ship factory or class.
     constructor(amountShips){
-        // this.missedAttacks = [];
+        // this.missedAttacks = Array.from({length: 10}, () => Array(10).fill(null));
         this.allShipSunk = amountShips;
         this.board = Array.from({length: 10}, () => Array(10).fill(null));
 
@@ -78,8 +78,12 @@ class Gameboard {
 }
 
 class Player{
-
+    constructor(){
+        this.gameboard = new Gameboard(5);
+    }
 }
 
 
-export {Ship, Gameboard}
+
+
+export {Ship, Gameboard, Player}

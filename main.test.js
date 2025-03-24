@@ -1,4 +1,4 @@
-import {Ship, Gameboard} from './main.js'
+import {Ship, Gameboard, Player} from './main.js'
 
 test('hit method', () => {
     const ship = new Ship(3)
